@@ -53,7 +53,7 @@
             flex-direction: column;
             justify-content: center;
             gap: 3px;
-            margin-left: 62px;
+            margin-left: 18%;
         }
 
         textarea#w3review {
@@ -110,12 +110,34 @@
             height: 700px;
 
         }
+
+        .btn {
+            font-size: 18px;
+            padding: 11px;
+            padding-bottom: 10px;
+            font-weight: 900;
+        }
+
+        input#textColor {
+            background: bisque;
+            width: 30%;
+            padding: 29px;
+            padding-bottom: 18px;
+            border: 2px solid green;
+        }
+
+        h2 {
+            font-size: xxx-large;
+            font-style: oblique;
+            color: wheat;
+        }
     </style>
 </head>
 
 <body>
     <section id="body-containt" class="body-containt2">
         <div class="container" id="container">
+            <h2>Text Manipulation Web Tool</h2>
             <div id="theme">
                 <button class="themebtn" id="themebtn" onclick="theme()">Dark Mode</button>
             </div>
@@ -126,20 +148,20 @@
                 <div class="button">
                     <button onclick="forUppercase()">Uppercase</button>
                     <button onclick="forLowercase()">Lowercase</button>
-                    <button onclick="forBold()">Bold</button>
+
                 </div>
                 <div class="button">
                     <button onclick="forItalic()">Italic</button>
-                    <button onclick="forColor()">Change Text Color</button>
                     <button onclick="forCapitalizeWord()">Capitalize Each Word</button>
                 </div>
+                <div class="button">
+                    <input type="color" id="textColor" onchange="changeColor()">
+                    <button class="btn" onclick="forBold()">Bold</button>
+                </div>
+
             </div>
             <div id="color-box">
-                <div id="box"></div>
-                <div id="box2"></div>
-                <div id="box3"></div>
-                <div id="box4"></div>
-                <div id="box5"></div>
+
             </div>
             <div id="output-box">
                 <textarea class="textarea" id="w3review" name="w3review" rows="5" cols="50"> </textarea>
@@ -149,6 +171,11 @@
     </section>
     <script>
         let box = document.getElementById("color-box");
+        let input = document.getElementById("input");
+        input.textContent = `change color`
+
+        let text = document.querySelector(".textarea");
+        text.textContent = input.value;
         function forUppercase() {
 
             let input = document.getElementById("input");
@@ -158,12 +185,21 @@
                 let res = inptValue;
                 text.textContent = res;
 
+
             } else {
                 let res = inptValue.toUpperCase();
                 text.textContent = res;
+                text.style.fontSize = "20px"
             }
 
- 
+
+        }
+
+        function changeColor() {
+            let input = document.getElementById("input");
+            let text = document.querySelector(".textarea");
+            const color = document.getElementById("textColor").value;
+            text.style.color = color;
         }
         function forLowercase() {
             let input = document.getElementById("input");
@@ -176,8 +212,9 @@
             } else {
                 let res = inptValue.toLowerCase();
                 text.textContent = res;
+                text.style.fontSize = "20px"
             }
- 
+
         }
         function forBold() {
             let input = document.getElementById("input");
@@ -187,11 +224,12 @@
 
             if (text.style.fontWeight != "bold") {
                 text.style.fontWeight = "bold";
+                text.style.fontSize = "20px"
             } else {
                 text.style.fontWeight = "normal"
             }
 
- 
+
         }
         function forItalic() {
             let input = document.getElementById("input");
@@ -200,26 +238,13 @@
             text.textContent = inptValue;
             if (text.style.fontStyle != "italic") {
                 text.style.fontStyle = "italic";
+                text.style.fontSize = "20px"
             } else {
                 text.style.fontStyle = "normal"
             }
- 
-        }
-        function forColor() {
-
-            let box = document.getElementById("box");
-            box.innerHTML = `<button class="color" onclick="yellowcolor()">yellow</button>`;
-            let box2 = document.getElementById("box2");
-            box2.innerHTML = `<button class="color" onclick="pinkcolor()">pink</button>`;
-            let box3 = document.getElementById("box3");
-            box3.innerHTML = `<button class="color" onclick="redcolor()">red</button>`;
-            let box4 = document.getElementById("box4");
-            box4.innerHTML = `<button class="color" onclick="greencolor()">green</button>`;
-            let box5 = document.getElementById("box5");
-            box5.innerHTML = `<button class="color" onclick="purplecolor()">purple</button>`;
- 
 
         }
+
 
         function forCapitalizeWord() {
             let input = document.getElementById("input");
@@ -232,8 +257,9 @@
 
             } else {
                 text.textContent = capi;
+                text.style.fontSize = "20px"
             }
- 
+
         }
 
         function capitalizeEachWord(sentence) {
@@ -245,61 +271,7 @@
 
         }
 
-        function yellowcolor() {
-            let input = document.getElementById("input");
-            let text = document.querySelector(".textarea");
-            let inptValue = input.value;
-             if (text.style.color != "yellow") {
-                text.style.color = "yellow";
-            } else {
-                text.style.color = "black"
-            }
-                                                 
-        }
-        function pinkcolor() {
-            let input = document.getElementById("input");
-            let text = document.querySelector(".textarea");
-            let inptValue = input.value;
-             if (text.style.color != "pink") {
-                text.style.color = "pink";
-            } else {
-                text.style.color = "black"
-            }
-             
-        }
-        function redcolor() {
-            let input = document.getElementById("input");
-            let text = document.querySelector(".textarea");
-            let inptValue = input.value;
-             if (text.style.color != "red") {
-                text.style.color = "red";
-            } else {
-                text.style.color = "black"
-            }
-            
-        }
-        function greencolor() {
-            let input = document.getElementById("input");
-            let text = document.querySelector(".textarea");
-            let inptValue = input.value;
-             if (text.style.color != "green") {
-                text.style.color = "green";
-            } else {
-                text.style.color = "black"
-            }
-             
-        }
-        function purplecolor() {
-            let input = document.getElementById("input");
-            let text = document.querySelector(".textarea");
-            let inptValue = input.value;
-            if (text.style.color != "purple") {
-                text.style.color = "purple";
-            } else {
-                text.style.color = "black"
-            }
-            
-        }
+
 
         let themebtn = document.querySelector("#body-containt");
         let themebutn = document.querySelector("#themebtn");
